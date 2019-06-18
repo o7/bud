@@ -8,14 +8,16 @@ defmodule BUD.Routes do
     {:ok, state, N2O.cx(context, path: path, module: route_prefix(path))}
   end
 
-  defp route_prefix(<<"/ws/", p::binary>>), do: route(p)
-  defp route_prefix(<<"/", p::binary>>), do: route(p)
-  defp route_prefix(path), do: route(path)
+  def route_prefix(<<"/ws/", p::binary>>), do: route(p)
+  def route_prefix(<<"/", p::binary>>), do: route(p)
+  def route_prefix(path), do: route(path)
 
-  defp route(<<>>), do: BUD.Login
-  defp route(<<"index", _::binary>>), do: BUD.Index
-  defp route(<<"login", _::binary>>), do: BUD.Login
-  defp route(<<"app/index", _::binary>>), do: BUD.Index
-  defp route(<<"app/login", _::binary>>), do: BUD.Login
-  defp route(_), do: BUD.Login
+  def route(<<>>), do: BUD.Index
+  def route(<<"actors", _::binary>>), do: BUD.Index
+  def route(<<"login", _::binary>>), do: BUD.Login
+  def route(<<"act", _::binary>>), do: BUD.Act
+  def route(<<"app/actors", _::binary>>), do: BUD.Index
+  def route(<<"app/login", _::binary>>), do: BUD.Login
+  def route(<<"app/act", _::binary>>), do: BUD.Act
+  def route(_), do: BUD.Login
 end
