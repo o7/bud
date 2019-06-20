@@ -31,6 +31,9 @@ Notes
 -----
 
 * [2019-04-11 BPE 4.4](https://tonpa.guru/stream/2019/2019-04-11%20Новая%20версия%20BPE.htm)
+* [2019-04-13 KVX 6.4](https://tonpa.guru/stream/2019/2019-04-13%20Новая%20версия%20KVX.htm)
+* [2019-06-10 N2O 6.6](https://tonpa.guru/stream/2019/2019-06-10%20N2O%20MIX.htm)
+* [2019-06-19 BPE 6.6](https://tonpa.guru/stream/2019/2019-06-19%20BPE%20MIX.htm)
 
 Credits
 -------
