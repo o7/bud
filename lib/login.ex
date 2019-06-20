@@ -9,7 +9,7 @@ defmodule BUD.Login do
     NITRO.insert_bottom(:stand, FORMS.new(mod.new(mod, mod.id()), mod.id()))
   end
 
-  def event({'Next', _}), do: NITRO.redirect("actors.htm")
-  def event({'Close', _}), do: NITRO.redirect("index.html")
+  def event({:Next, _}), do: NITRO.redirect("actors.htm")
+  def event({:Close, _}), do: NITRO.redirect("index.html")
   def event(any), do: IO.inspect(any)
 end

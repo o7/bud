@@ -27,7 +27,7 @@ defmodule BUD.Pass do
           title: "Proceed",
           class: [:button, :sgreen],
           sources: [:user, :otp],
-          postback: {'Next', FORMS.atom([:otp, :otp, name])}
+          postback: {:Next, FORMS.atom([:otp, :otp, name])}
         )
       ],
       fields: [
