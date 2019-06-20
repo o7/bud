@@ -19,9 +19,16 @@ defmodule BUD.Row do
       id: FORMS.atom([:tr, name]),
       class: :td,
       body: [
-        panel(class: :column6, body: link(href: "act.htm?p=" <> NITRO.to_binary(pid), body: NITRO.to_binary(pid))),
+        panel(
+          class: :column6,
+          body:
+            link(href: "act.htm?p=" <> NITRO.to_binary(pid), body: NITRO.to_binary(pid))
+        ),
         panel(class: :column6, body: NITRO.to_list(process(proc, :name))),
-        panel(class: :column6, body: NITRO.to_list(task(BPE.step(process(proc, :task), proc), :module))),
+        panel(
+          class: :column6,
+          body: NITRO.to_list(task(BPE.step(process(proc, :task), proc), :module))
+        ),
         panel(class: :column20, body: NITRO.to_list(process(proc, :task))),
         panel(
           class: :column20,
