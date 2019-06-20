@@ -1,8 +1,16 @@
 defmodule BUD.Login do
   use N2O, with: [:n2o, :nitro]
+  use FORMS
   require Logger
-  def event(:init), do: []
-  def event(:login), do: []
+
+  def event(:init) do
+    NITRO.clear(:stand)
+    mod = BUD.Pass
+    NITRO.insert_bottom(:stand, FORMS.new(mod.new(mod, mod.id()), mod.id()))
+  end
+
+  def event({'Next', _}), do: NITRO.redirect("actors.htm")
+  def event({'Close', _}), do: NITRO.redirect("index.html")
 
   def event(unexpected) do
     unexpected

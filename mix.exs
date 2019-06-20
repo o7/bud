@@ -11,7 +11,7 @@ defmodule BUD.Mixfile do
   end
 
   def application() do
-    [mod: {BUD.Application, []}]
+    [mod: {BUD.Application, []}, applications: [:cowboy, :forms, :n2o, :nitro, :bpe]]
   end
 
   def deps() do
@@ -19,9 +19,11 @@ defmodule BUD.Mixfile do
       {:cowboy, "~> 2.5"},
       {:rocksdb, github: "voxoz/rocks"},
       {:gproc, github: "voxoz/gproc"},
-      {:n2o, github: "synrc/n2o"},
-      {:kvx, github: "synrc/kvx"},
-      {:nitro, github: "synrc/nitro"}
+      {:n2o, github: "synrc/n2o", override: true},
+      {:nitro, github: "synrc/nitro", override: true},
+      {:forms, github: "synrc/forms"},
+      {:bpe, github: "synrc/bpe"},
+      {:kvx, github: "synrc/kvx"}
     ]
   end
 end

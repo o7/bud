@@ -15,9 +15,11 @@ defmodule BUD.Routes do
   def route(<<>>), do: BUD.Index
   def route(<<"actors", _::binary>>), do: BUD.Index
   def route(<<"login", _::binary>>), do: BUD.Login
+  def route(<<"forms", _::binary>>), do: BUD.Forms
   def route(<<"act", _::binary>>), do: BUD.Act
   def route(<<"app/actors", _::binary>>), do: BUD.Index
   def route(<<"app/login", _::binary>>), do: BUD.Login
+  def route(<<"app/forms", _::binary>>), do: BUD.Forms
   def route(<<"app/act", _::binary>>), do: BUD.Act
   def route(_), do: BUD.Login
 end
