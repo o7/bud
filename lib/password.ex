@@ -9,7 +9,7 @@ defmodule BUD.Pass do
   def doc(), do: "One-time password PIN."
   def id(), do: phone()
 
-  def new(name, phone) do
+  def new(name, _phone) do
     document(
       name: FORMS.atom([:otp, name]),
       sections: [sec(name: "Input the credentials: ")],

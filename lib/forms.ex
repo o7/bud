@@ -3,10 +3,5 @@ defmodule BUD.Forms do
   require Logger
   def event(:init), do: []
   def event(:login), do: []
-
-  def event(unexpected) do
-    unexpected
-    |> inspect()
-    |> Logger.warn()
-  end
+  def event(any), do: IO.inspect(any)
 end

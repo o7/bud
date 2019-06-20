@@ -11,10 +11,5 @@ defmodule BUD.Login do
 
   def event({'Next', _}), do: NITRO.redirect("actors.htm")
   def event({'Close', _}), do: NITRO.redirect("index.html")
-
-  def event(unexpected) do
-    unexpected
-    |> inspect()
-    |> Logger.warn()
-  end
+  def event(any), do: IO.inspect(any)
 end
