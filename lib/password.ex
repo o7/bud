@@ -4,7 +4,7 @@ defmodule BUD.Pass do
   require Logger
   require Record
 
-  Record.defrecord(:phone, [:code, :number])
+  Record.defrecord(:phone, code: "+380676631870", number: "0000")
 
   def doc(), do: "One-time password PIN."
   def id(), do: phone()
