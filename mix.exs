@@ -21,7 +21,8 @@ defmodule BUD.Mixfile do
       {:gproc, github: "voxoz/gproc"},
       {:forms, github: "synrc/forms"},
       {:bpe, github: "synrc/bpe"},
-      {:kvx, github: "synrc/kvx"}
+      {:kvx, github: "synrc/kvx"},
+      {:n2o, github: "synrc/n2o"}
     ]
   end
 end

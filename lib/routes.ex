@@ -1,11 +1,11 @@
 defmodule BUD.Routes do
-  require N2O
+  use N2O, with: [:n2o, :nitro]
 
   def finish(state, context), do: {:ok, state, context}
 
   def init(state, context) do
-    %{path: path} = N2O.cx(context, :req)
-    {:ok, state, N2O.cx(context, path: path, module: route_prefix(path))}
+    %{path: path} = cx(context, :req)
+    {:ok, state, cx(context, path: path, module: route_prefix(path))}
   end
 
   def route_prefix(<<"/ws/", p::binary>>), do: route(p)
