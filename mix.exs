@@ -19,8 +19,6 @@ defmodule BUD.Mixfile do
       {:cowboy, "~> 2.5"},
       {:rocksdb, github: "voxoz/rocks"},
       {:gproc, github: "voxoz/gproc"},
-      {:n2o, github: "synrc/n2o", override: true},
-      {:nitro, github: "synrc/nitro", override: true},
       {:forms, github: "synrc/forms"},
       {:bpe, github: "synrc/bpe"},
       {:kvx, github: "synrc/kvx"}
