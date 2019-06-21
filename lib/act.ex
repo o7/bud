@@ -19,6 +19,8 @@ defmodule BUD.Act do
   def id(), do: {:pi, []}
 
   def new(name, {:pi, _code}) do
+    IO.inspect(name)
+
     document(
       name: FORMS.atom([:pi, name]),
       sections: [sec(name: "New process: ")],

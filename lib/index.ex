@@ -43,7 +43,6 @@ defmodule BUD.Index do
   def event({:complete, id}) do
     BPE.start(BPE.load(id), [])
     BPE.complete(id)
-    IO.inspect(FORMS.atom([:tr, :row, id]))
 
     NITRO.update(
       FORMS.atom([:tr, :row, id]),
@@ -52,7 +51,7 @@ defmodule BUD.Index do
   end
 
   def event({:Spawn, _}) do
-    atom = NITRO.to_atom(NITRO.q(:"process_type_pi_Elixir.BUD.Act"))
+    atom = 'process_type_pi_Elixir.BUD.Act' |> NITRO.q() |> NITRO.to_atom()
 
     id =
       case BPE.start(atom.def(), []) do
