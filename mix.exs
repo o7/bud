@@ -11,7 +11,7 @@ defmodule BUD.Mixfile do
   end
 
   def application() do
-    [mod: {BUD.Application, []}, applications: [:cowboy, :forms, :n2o, :nitro, :bpe]]
+    [mod: {BUD.Application, []}]
   end
 
   def deps() do
