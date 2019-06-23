@@ -16,6 +16,7 @@ defmodule BUD.Mixfile do
 
   def deps() do
     [
+      {:ex_doc, "~> 0.11", only: :dev},
       {:cowboy, "~> 2.5"},
       {:rocksdb, github: "voxoz/rocks"},
       {:bpe, github: "synrc/bpe"},
