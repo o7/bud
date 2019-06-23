@@ -25,7 +25,7 @@ $ mix compile
 $ iex -S mix
 ```
 
-Then open `https://localhost:8042/app/index.html`
+Then open `https://localhost:8043/app/index.html`
 
 Notes
 -----

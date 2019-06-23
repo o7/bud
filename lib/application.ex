@@ -9,7 +9,7 @@ defmodule BUD.Application do
 
   def start_cowboy() do
     options = [
-      port: Application.get_env(:n2o, :port, 8042),
+      port: Application.get_env(:n2o, :port, 8043),
       certfile: :code.priv_dir(:bud) ++ '/ssl/fullchain.pem',
       keyfile: :code.priv_dir(:bud) ++ '/ssl/privkey.pem',
       cacertfile: :code.priv_dir(:bud) ++ '/ssl/fullchain.pem'
