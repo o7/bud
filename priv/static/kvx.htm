@@ -1,0 +1,72 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SYNRC KVS ADM" />
+  <meta name="author" content="Maxim Sokhatsky" />
+  <title>KVX</title>
+  <link rel="stylesheet" href="css/5HT.css" />
+  <link rel="stylesheet" href="css/adm.css" />
+  <link href="https://fonts.googleapis.com/css?family=Michroma" rel="stylesheet">
+  <script> function setup_window(name) { console.log("OK"); }; </script>
+</head>
+
+<body>
+
+  <nav class=nav>
+    <a href="">N2O</a>
+    <a href="">KVX</a>
+    <a href="">BPE</a>
+  </nav>
+
+  <div class=app>
+
+    <div class=header>
+      <h1 class=title>KVX</h1>
+      <div class=resources>
+        SSD: <span id=disc></span>, RAM: <span id=ram></span>
+      </div>
+      <div class="info">
+        <div>SESSION:
+          <div id=session></div>
+        </div>
+        <div>VM: <span id=enode></span></div>
+        <div>DATE: <span id=date></span></div>
+      </div>
+    </div>
+
+    <div class=chart align=center>
+      <svg width=800 height=200></svg>
+      <script src="http://d3js.org/d3.v4.min.js"></script>
+      <script src="js/d3.js"></script>
+    </div>
+
+    <div class=container>
+      <div id=streams><h2>STREAMS</h2></div>
+      <div id=datawin><h2>DATA WINDOW</h2></div>
+      <div id=binders><h2>BINDERS</h2></div>
+      <div id=boot    <h2>CORE</h2></div>
+    </div>
+
+  </div>
+
+    <script src='https://ws.n2o.space/priv/utf8.js'></script>
+    <script src='https://ws.n2o.space/priv/bert.js'></script>
+    <script src='https://ws.n2o.space/priv/heart.js'></script>
+    <script src='https://ws.n2o.space/priv/ieee754.js'></script>
+    <script src='https://ws.n2o.space/priv/n2o.js'></script>
+    <script>host = location.hostname === 'sample.n2o.space' ? 'ns.synrc.com' : location.hostname;
+                port = 8043;</script>
+    <script src='https://ws.n2o.space/priv/ftp.js'></script>
+    <script src='https://ws.n2o.space/priv/nitro.js'></script>
+    <script>$io.do = function(r) { console.log(r); };</script>
+    <script>protos = [$bert]; N2O_start();
+            document.querySelector('.container')
+                    .addEventListener('click', function(e) { e.preventDefault() });
+        </script>
+    <script src='/app/js/d3.js?v=2'></script>
+</body>
+
+</html>
