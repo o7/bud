@@ -17,7 +17,7 @@ defmodule BUD.Mixfile do
       files: ~w(doc lib src mix.exs LICENSE),
       licenses: ["ISC"],
       maintainers: ["Namdak Tonpa"],
-      name: :bpe,
+      name: :bud,
       links: %{"GitHub" => "https://github.com/o7/bud"}
     ]
   end
