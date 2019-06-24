@@ -14,7 +14,7 @@ defmodule BUD.Mixfile do
 
   def package do
     [
-      files: ~w(doc lib src mix.exs LICENSE rebar.config),
+      files: ~w(doc lib src mix.exs LICENSE),
       licenses: ["ISC"],
       maintainers: ["Namdak Tonpa"],
       name: :bpe,
