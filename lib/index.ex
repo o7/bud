@@ -1,7 +1,7 @@
 defmodule BUD.Index do
   require Logger
-  use N2O, with: [:n2o, :kvx, :nitro]
-  use FORMS
+  use N2O, with: [:n2o, :kvs, :nitro]
+  use FORM
   use BPE
 
   def header() do
@@ -26,7 +26,7 @@ defmodule BUD.Index do
     NITRO.clear(:frms)
     NITRO.clear(:ctrl)
     mod = BUD.Act
-    NITRO.insert_bottom(:frms, FORMS.new(mod.new(mod, mod.id()), mod.id()))
+    NITRO.insert_bottom(:frms, FORM.new(mod.new(mod, mod.id()), mod.id()))
 
     NITRO.insert_bottom(
       :ctrl,
@@ -35,9 +35,9 @@ defmodule BUD.Index do
 
     NITRO.hide(:frms)
 
-    for i <- KVX.all(:process),
+    for i <- KVS.all(:process),
         do:
-          NITRO.insert_top(:tableRow, BUD.Row.new(FORMS.atom([:row, process(i, :id)]), i))
+          NITRO.insert_top(:tableRow, BUD.Row.new(FORM.atom([:row, process(i, :id)]), i))
   end
 
   def event({:complete, id}) do
@@ -45,8 +45,8 @@ defmodule BUD.Index do
     BPE.complete(id)
 
     NITRO.update(
-      FORMS.atom([:tr, :row, id]),
-      BUD.Row.new(FORMS.atom([:row, id]), BPE.load(id))
+      FORM.atom([:tr, :row, id]),
+      BUD.Row.new(FORM.atom([:row, id]), BPE.load(id))
     )
   end
 
@@ -59,7 +59,7 @@ defmodule BUD.Index do
         {:ok, i} -> i
       end
 
-    NITRO.insert_after(:header, BUD.Row.new(FORMS.atom([:row, id]), BPE.proc(id)))
+    NITRO.insert_after(:header, BUD.Row.new(FORM.atom([:row, id]), BPE.proc(id)))
     NITRO.hide(:frms)
     NITRO.show(:ctrl)
   end

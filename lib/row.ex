@@ -1,13 +1,13 @@
 defmodule BUD.Row do
   use N2O, with: [:n2o, :nitro]
-  use FORMS, with: [:forms]
+  use FORM, with: [:form]
   use BPE
   require Logger
   require Record
 
   def doc(),
     do:
-      "This is the actor table row representation in FORMS CSS. Used to draw active processes" <>
+      "This is the actor table row representation in FORM CSS. Used to draw active processes" <>
         " in <a href=\"actors.htm\">BPE process table</a> but displayed as class=form."
 
   def id(), do: process()
@@ -16,7 +16,7 @@ defmodule BUD.Row do
     pid = process(proc, :id)
 
     panel(
-      id: FORMS.atom([:tr, name]),
+      id: FORM.atom([:tr, name]),
       class: :td,
       body: [
         panel(

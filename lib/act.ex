@@ -1,6 +1,6 @@
 defmodule BUD.Act do
-  use N2O, with: [:n2o, :kvx, :nitro]
-  use FORMS, with: [:forms]
+  use N2O, with: [:n2o, :kvs, :nitro]
+  use FORM, with: [:form]
   use BPE
   require Logger
 
@@ -22,17 +22,17 @@ defmodule BUD.Act do
     IO.inspect(name)
 
     document(
-      name: FORMS.atom([:pi, name]),
+      name: FORM.atom([:pi, name]),
       sections: [sec(name: "New process: ")],
       buttons: [
         but(
-          id: FORMS.atom([:pi, :decline]),
+          id: FORM.atom([:pi, :decline]),
           title: "Discard",
           class: :cancel,
           postback: {:Discard, []}
         ),
         but(
-          id: FORMS.atom([:pi, :proceed]),
+          id: FORM.atom([:pi, :proceed]),
           title: "Create",
           class: [:button, :sgreen],
           sources: [:process_type],
@@ -68,7 +68,7 @@ defmodule BUD.Act do
         _, _ -> 0
       end
 
-    case KVX.get(:process, id) do
+    case KVS.get(:process, id) do
       {:error, :not_found} ->
         NITRO.update(:n, "ERR")
         NITRO.update(:desc, "No process found.")
@@ -86,7 +86,7 @@ defmodule BUD.Act do
         do:
           NITRO.insert_bottom(
             :tableRow,
-            BUD.Trace.new(FORMS.atom([:trace, NITRO.to_list(hist(i, :id))]), i)
+            BUD.Trace.new(FORM.atom([:trace, NITRO.to_list(hist(i, :id))]), i)
           )
   end
 

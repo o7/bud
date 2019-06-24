@@ -1,6 +1,6 @@
 defmodule BUD.Trace do
-  use N2O, with: [:n2o, :kvx, :nitro]
-  use FORMS, with: [:forms]
+  use N2O, with: [:n2o, :kvs, :nitro]
+  use FORM, with: [:form]
   use BPE
   require Logger
 
@@ -21,7 +21,7 @@ defmodule BUD.Trace do
     docs = hist(h, :docs)
 
     panel(
-      id: FORMS.atom([:tr, NITRO.to_list(name)]),
+      id: FORM.atom([:tr, NITRO.to_list(name)]),
       class: :td,
       body: [
         panel(

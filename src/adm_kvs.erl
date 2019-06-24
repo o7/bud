@@ -1,7 +1,7 @@
 -module(adm_kvs).
 -compile(export_all).
 -include_lib("nitro/include/nitro.hrl").
--include_lib("kvx/include/kvx.hrl").
+-include_lib("kvs/include/kvs.hrl").
 
 event(init) -> io:format("OK~n"),
                [ self() ! {direct,{atom,X}} || X <- [streams,datawin,binders,boot] ],
@@ -17,38 +17,38 @@ event(init) -> io:format("OK~n"),
                nitro:update(date,bpe_date:date_to_string(bpe_date:today())),
                nitro:update(enode,lists:concat([node()]));
 event({binder,Name}) -> nitro:update(datawin,fold_(table_fold(Name,first(Name),20,[])));
-event({stream,Name}) -> Feed = case element(3,kvx:table(Name)) of
+event({stream,Name}) -> Feed = case element(3,kvs:table(Name)) of
                             true -> feed;
                             F -> F end,
-                        case kvx:get(Feed,Name) of
+                        case kvs:get(Feed,Name) of
                              {ok,V} -> []; %nitro:update(datawin,fold(Name,element(#container.top,V),20));
                              _ -> nitro:update(datawin,fold(Name,0,0)) end;
 event({atom,X}) -> nitro:update(X,?MODULE:X());
 event(U) -> io:format("Unknown Event: ~p~n\n",[U]).
 main() -> [].
 
-tables() -> [ element(2,T) || T <- kvx:tables() ].
-containers() -> [ element(2,T) || T <- kvx:tables(), element(2,T) == 'writer' orelse element(2,T) == 'reader' ].
-iterators() -> [ element(2,T) || T <- kvx:tables(), element(2,T) == 'iter' orelse element(2,T) == 'ite' ].
-noniterators() -> [ element(2,T) || T <- kvx:tables(), element(2,T) == 'it' ].
-binders_() -> [ X || {X,_}<- kvx:all(writer) ].
+tables() -> [ element(2,T) || T <- kvs:tables() ].
+containers() -> [ element(2,T) || T <- kvs:tables(), element(2,T) == 'writer' orelse element(2,T) == 'reader' ].
+iterators() -> [ element(2,T) || T <- kvs:tables(), element(2,T) == 'iter' orelse element(2,T) == 'ite' ].
+noniterators() -> [ element(2,T) || T <- kvs:tables(), element(2,T) == 'it' ].
+binders_() -> [ X || {X,_}<- kvs:all(writer) ].
 bsize(Config) -> 0.
 blocks(Config) -> length(Config)+1.
 opacity() -> nitro:jse("qi('datawin').style.opacity='0.3';").
 setup_window(StrName) -> "setup_window("++StrName++");".
-row(Name) -> Config = application:get_env(kvx,Name,[]), StrName = lists:concat([Name]),
+row(Name) -> Config = application:get_env(kvs,Name,[]), StrName = lists:concat([Name]),
              #tr{id=Name,cells=[#td{body=#link{onclick=[opacity(),setup_window(StrName)],body=StrName,postback={stream,Name}}},
                                 #td{body=lists:concat([blocks(Config)])},
                                 #td{body=lists:concat([bsize(Config)+mnesia:table_info(Name,size)])}]}.
 
-row2(Name) -> Config = application:get_env(kvx,Name,[]), StrName = lists:concat([Name]),
+row2(Name) -> Config = application:get_env(kvs,Name,[]), StrName = lists:concat([Name]),
              #tr{id=Name,cells=[#td{body=#link{body=StrName,onclick=opacity(),postback={binder,Name}}},
                                 #td{body=lists:concat([Name])}]}.
 
 row3(Record) ->
              Name = element(1,Record),
              Id = element(2,Record),
-             Table = kvx:table(Name),
+             Table = kvs:table(Name),
              #tr{id=Id,cells=[#td{body=#b{body=io_lib:format("~tp",[Id])}},
                               #td{body=nitro:jse(lists:concat([io_lib:format("~tp",[Record])]))}]}.
 
@@ -70,7 +70,7 @@ first(Name) -> {atomic,Key} = mnesia:transaction(fun() -> mnesia:first(Name) end
 table_fold(_,_,0,Acc) -> Acc;
 table_fold(Name,'$end_of_table',Count,Acc) -> Acc;
 table_fold(Name,First,Count,Acc) ->
-   Data = case kvx:get(Name,First) of
+   Data = case kvs:get(Name,First) of
         {ok,D} -> D;
         _ -> [] end,
    {atomic,Key} = mnesia:transaction(fun() -> mnesia:next(Name,First) end),
@@ -87,7 +87,7 @@ fold_(Traverse) ->
                    ]}]}.
 
 fold(Table,Start,Count) ->
-  Traverse = [],%kvx:traversal(Table,Start,Count,#iterator.prev,#kvs{mod=store_mnesia}),
+  Traverse = [],%kvs:traversal(Table,Start,Count,#iterator.prev,#kvs{mod=store_mnesia}),
   fold_(Traverse).
 
 binders() ->

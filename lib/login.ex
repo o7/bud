@@ -1,12 +1,12 @@
 defmodule BUD.Login do
   use N2O, with: [:n2o, :nitro]
-  use FORMS
+  use FORM
   require Logger
 
   def event(:init) do
     NITRO.clear(:stand)
     mod = BUD.Pass
-    NITRO.insert_bottom(:stand, FORMS.new(mod.new(mod, mod.id()), mod.id()))
+    NITRO.insert_bottom(:stand, FORM.new(mod.new(mod, mod.id()), mod.id()))
   end
 
   def event({:Next, _}), do: NITRO.redirect("actors.htm")

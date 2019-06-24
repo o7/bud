@@ -1,6 +1,6 @@
 defmodule BUD.Pass do
   use N2O, with: [:n2o, :nitro]
-  use FORMS, with: [:forms]
+  use FORM, with: [:form]
   require Logger
   require Record
 
@@ -11,7 +11,7 @@ defmodule BUD.Pass do
 
   def new(name, _phone) do
     document(
-      name: FORMS.atom([:otp, name]),
+      name: FORM.atom([:otp, name]),
       sections: [sec(name: "Input the credentials: ")],
       buttons: [
         but(
@@ -27,7 +27,7 @@ defmodule BUD.Pass do
           title: "Proceed",
           class: [:button, :sgreen],
           sources: [:user, :otp],
-          postback: {:Next, FORMS.atom([:otp, :otp, name])}
+          postback: {:Next, FORM.atom([:otp, :otp, name])}
         )
       ],
       fields: [
