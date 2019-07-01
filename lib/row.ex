@@ -21,8 +21,7 @@ defmodule BUD.Row do
       body: [
         panel(
           class: :column6,
-          body:
-            link(href: "act.htm?p=" <> NITRO.to_binary(pid), body: NITRO.to_binary(pid))
+          body: link(href: "act.htm?p=" <> NITRO.to_binary(pid), body: NITRO.to_binary(pid))
         ),
         panel(class: :column6, body: NITRO.to_list(process(proc, :name))),
         panel(

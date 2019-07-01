@@ -36,8 +36,7 @@ defmodule BUD.Index do
     NITRO.hide(:frms)
 
     for i <- KVS.all(:process),
-        do:
-          NITRO.insert_top(:tableRow, BUD.Row.new(FORM.atom([:row, process(i, :id)]), i))
+        do: NITRO.insert_top(:tableRow, BUD.Row.new(FORM.atom([:row, process(i, :id)]), i))
   end
 
   def event({:complete, id}) do
@@ -67,9 +66,7 @@ defmodule BUD.Index do
   def event({:Discard, []}), do: [NITRO.hide(:frms), NITRO.show(:ctrl)]
 
   def event({event, name}) do
-    NITRO.wire(
-      :lists.concat(["console.log(\"", :io_lib.format("~p", [{event, name}]), "\");"])
-    )
+    NITRO.wire(:lists.concat(["console.log(\"", :io_lib.format("~p", [{event, name}]), "\");"]))
 
     IO.inspect({event, name})
   end
