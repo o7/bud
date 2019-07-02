@@ -28,12 +28,12 @@ defmodule BUD.Mixfile do
 
   def deps() do
     [
-      {:ex_doc, "~> 0.11", only: :dev},
-      {:cowboy, "~> 2.5"},
+      {:ex_doc, "~> 0.11.0", only: :dev},
+      {:cowboy, "~> 2.5.0"},
       {:rocksdb, "~> 1.2.0"},
-      {:n2o, "~> 6.6"},
+      {:n2o, "~> 6.6.0"},
       {:syn, "~> 1.6.3"},
-      {:kvs, "~> 6.6"},
+      {:kvs, "~> 6.7.0"},
       {:bpe, "~> 4.6.0"},
       {:form, "~> 4.6.0"}
     ]
