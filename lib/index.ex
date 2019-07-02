@@ -35,17 +35,19 @@ defmodule BUD.Index do
 
     NITRO.hide(:frms)
 
-    for i <- KVS.feed('/bpe/proc'),
-        do: NITRO.insert_bottom(:tableRow, BUD.Row.new(FORM.atom([:row, process(i, :id)]), i))
+    for i <- KVS.feed('/bpe/proc') do
+      NITRO.insert_bottom(
+        :tableRow,
+        BUD.Row.new(FORM.atom([:row, process(i, :id)]), BPE.load(process(i, :id)))
+      )
+    end
   end
 
   def event({:complete, id}) do
-    BPE.start(BPE.load(id), [])
+    p = :bpe.load(id)
+    BPE.start(p, [])
     BPE.complete(id)
-    y = BPE.load(id)
-    x = BUD.Row.new(FORM.atom([:row, id]), y)
-    NITRO.update(FORM.atom([:tr, :row, id]), x)
-    IO.inspect(:erlang.iolist_to_binary(NITRO.render(NITRO.actions())))
+    NITRO.update(FORM.atom([:tr, :row, id]), BUD.Row.new(FORM.atom([:row, id]), BPE.proc(id)))
   end
 
   def event({:Spawn, _}) do

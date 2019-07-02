@@ -8,6 +8,7 @@ defmodule BUD.Account do
     process(
       name: "IBAN Account",
       flows: [
+        sequenceFlow(source: :Created, target: :Init),
         sequenceFlow(source: :Init, target: :Upload),
         sequenceFlow(source: :Upload, target: :Payment),
         sequenceFlow(source: :Payment, target: [:Signatory, :Process]),
@@ -15,6 +16,7 @@ defmodule BUD.Account do
         sequenceFlow(source: :Signatory, target: [:Process, :Final])
       ],
       tasks: [
+        userTask(name: :Created, module: BUD.Account),
         userTask(name: :Init, module: BUD.Account),
         userTask(name: :Upload, module: BUD.Account),
         userTask(name: :Signatory, module: BUD.Account),
@@ -28,7 +30,15 @@ defmodule BUD.Account do
     )
   end
 
-  def action({:request, :Init}, proc), do: {:reply, proc}
+  def action({:request, :Created}, proc) do
+    IO.inspect("First Step")
+    {:reply, proc}
+  end
+
+  def action({:request, :Init}, proc) do
+    IO.inspect("Second Step")
+    {:reply, proc}
+  end
 
   def action({:request, :Payment}, proc) do
     payment = BPE.doc({:payment_notification}, proc)

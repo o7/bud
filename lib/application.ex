@@ -8,8 +8,6 @@ defmodule BUD.Application do
 
   def initialize() do
     :cowboy.start_tls(:http, :n2o_cowboy.env(:bud), %{env: %{dispatch: :n2o_cowboy2.points()}})
-    :kvs.join()
     :syn.init()
-    :bud.boot()
   end
 end
