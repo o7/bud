@@ -68,7 +68,7 @@ defmodule BUD.Act do
         _, _ -> 0
       end
 
-    case KVS.get(:process, id) do
+    case KVS.get('/bpe/proc', id) do
       {:error, :not_found} ->
         NITRO.update(:n, "ERR")
         NITRO.update(:desc, "No process found.")

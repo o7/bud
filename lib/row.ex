@@ -28,7 +28,7 @@ defmodule BUD.Row do
           class: :column6,
           body: NITRO.to_list(task(BPE.step(process(proc, :task), proc), :module))
         ),
-        panel(class: :column20, body: NITRO.to_list(process(proc, :task))),
+        panel(class: :column20, body: NITRO.to_list(:erlang.element(2,hist(BPE.head(pid), :task))) ),
         panel(
           class: :column20,
           body:
