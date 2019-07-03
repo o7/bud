@@ -7,7 +7,7 @@ event(init)      -> [ begin nitro:clear(X), self() ! {direct,X} end || X <- [wri
 event(ram)       -> nitro:update(ram, #span{id = ram, body = ram(os:type())});
 event(session)   -> nitro:update(session, #span{id = session, body = n2o:sid()});
 event(enode)     -> nitro:update(enode, #span{id = enode, body = lists:concat([node()])});
-event(disk)      -> nitro:update(disc, #span{id = disc, body = hd(string:tokens(os:cmd("du -hs rocksdb"),"\t"))});
+event(disc)      -> nitro:update(disc, #span{id = disc, body = hd(string:tokens(os:cmd("du -hs rocksdb"),"\t"))});
 event({link,Id}) -> nitro:clear(feeds),
                     lists:map(fun(T)-> nitro:insert_bottom(feeds, #panel{body=nitro:compact(T)}) end,kvs:feed(Id));
 event(writers)   -> [ nitro:insert_bottom(writers, #panel{body = [#link{ href= "kvs.htm?writer=" ++ Id,
