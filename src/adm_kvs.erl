@@ -25,8 +25,9 @@ event(init) -> io:format("OK~n"),
    ok;
 
 event(streams) ->
-   [ nitro:insert_bottom(streams, #link{ href= "kvx.htm?writer=" ++ Id, 
-     body = Id, postback = {link,Id}})  || #writer{id = Id} <- kvs:all(writer) ];
+   [ nitro:insert_bottom(streams, #panel{body = [#link{ href= "kvx.htm?writer=" ++ Id, 
+     body = Id, postback = {link,Id}}," (" ++ integer_to_list(C) ++ ")"]})
+     || #writer{id = Id, count = C} <- kvs:all(writer) ];
 
 event({link,Id}) ->
    nitro:clear(datawin),
@@ -39,3 +40,4 @@ compact(Tuple) when is_tuple(Tuple) ->
      Fields = lists:zip(lists:seq(1,Min),lists:sublist(tuple_to_list(Tuple),1,Min)),
      nitro:jse(iolist_to_binary([ io_lib:format("~p",[compact(F)]) || {_,F}<- Fields ]));
 compact(Tuple) -> Tuple.
+    
