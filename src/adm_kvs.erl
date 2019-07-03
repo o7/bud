@@ -5,7 +5,10 @@
 -include_lib("kvs/include/cursors.hrl").
 
 event(init) -> io:format("OK~n"),
-   [ self() ! {direct,X} || X <- [streams] ],
+   [ self() ! {direct,X} || X <- [streams,titles] ],
+   ok;
+
+event(titles) ->
    Disc = hd(string:tokens(os:cmd("du -hs rocksdb"),"\t")),
    io:format("Disk: ~p~n",[Disc]),
    nitro:update(disc, #span{id = disc, body = Disc}),
