@@ -8,7 +8,7 @@ defmodule BUD.Row do
   def doc(),
     do:
       "This is the actor table row representation in FORM CSS. Used to draw active processes" <>
-        " in <a href=\"actors.htm\">BPE process table</a> but displayed as class=form."
+        " in <a href=\"bpe.htm\">BPE process table</a> but displayed as class=form."
 
   def id(), do: process()
 
