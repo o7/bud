@@ -7,8 +7,8 @@
   <meta name="description" content="SYNRC KVS ADM" />
   <meta name="author" content="Maxim Sokhatsky" />
   <title>KVS</title>
-  <link rel="stylesheet" href="css/adm.css?v=2" />
   <link rel="stylesheet" href="css/blank.css" />
+  <link rel="stylesheet" href="css/adm.css" />
   <link href="https://fonts.googleapis.com/css?family=Michroma" rel="stylesheet">
   <script> function setup_window(name) { console.log("OK"); }; </script>
 </head>
@@ -19,26 +19,25 @@
     <a href='index.html'>BUD</a>
     <a href='login.htm'>LOGIN</a>
     <a href='bpe.htm'>BPE</a>
-    <a href='forms.htm'>FORMS</a>
+    <a href='form.htm'>FORM</a>
     <a href='kvs.htm' style="background:#ededed;">KVS</a>
  </nav>
 
 <aside>
 
-<article>
-
-
+  <article>
 
     <section>
+      <h2>KVS</h2>
+      <p>Abstract chain database</p>
       <div>
       SSD: <span id=disc></span>
-      RAM: <span id=ram></span>
+      RAM: <span id=ram></span><br>
       SESSION: <span id=session></span>
       VM: <span id=enode></span>
       </div>
     </section>
 
-</article>
 
     <div class=chart align=center>
       <svg width=900 height=200></svg>
@@ -46,11 +45,13 @@
       <script src="js/d3.js"></script>
     </div>
 
-
     <div class=container>
       <div><h2>WRITERS</h2><div  id=streams></div></div>
-      <div><h2>FEEDS</h2><div  id=datawin></div></div>
+      <div><h2>FEEDS</h2><div  id=datawin>To display the feed select the writer.</div></div>
     </div>
+
+  </article>
+
 </aside>
 
 <main>

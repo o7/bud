@@ -14,7 +14,6 @@ body {
 }
 
 article {
-  max-width: 1000px;
   margin: auto;
 }
 
@@ -37,6 +36,7 @@ article {
 }
 
 .container {
+  text-align: left;
   padding: 1px;
   margin: 60px 0;
   position: relative;
