@@ -13,15 +13,15 @@ defmodule BUD.Routes do
   def route_prefix(path), do: route(path)
 
   def route(<<>>), do: BUD.Index
-  def route(<<"actors", _::binary>>), do: BUD.Index
+  def route(<<"bpe", _::binary>>), do: BUD.Index
   def route(<<"login", _::binary>>), do: BUD.Login
   def route(<<"forms", _::binary>>), do: BUD.Forms
   def route(<<"act", _::binary>>), do: BUD.Act
-  def route(<<"kvx", _::binary>>), do: :adm_kvs
-  def route(<<"app/actors", _::binary>>), do: BUD.Index
+  def route(<<"kvs", _::binary>>), do: :adm_kvs
+  def route(<<"app/bpe", _::binary>>), do: BUD.Index
   def route(<<"app/login", _::binary>>), do: BUD.Login
   def route(<<"app/forms", _::binary>>), do: BUD.Forms
   def route(<<"app/act", _::binary>>), do: BUD.Act
-  def route(<<"app/kvx", _::binary>>), do: :adm_kvs
+  def route(<<"app/kvs", _::binary>>), do: :adm_kvs
   def route(_), do: BUD.Login
 end

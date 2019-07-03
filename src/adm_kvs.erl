@@ -41,6 +41,6 @@ event(U) -> io:format("Unknown Event: ~p~n\n",[U]).
 compact(Tuple) when is_tuple(Tuple) ->
      Min = erlang:min(10,size(Tuple)),
      Fields = lists:zip(lists:seq(1,Min),lists:sublist(tuple_to_list(Tuple),1,Min)),
-     nitro:jse(iolist_to_binary([ io_lib:format("~p",[compact(F)]) || {_,F}<- Fields ]));
+     nitro:jse([ nitro:to_binary(io_lib:format("~p",[compact(F)])) || {_,F}<- Fields ]);
 compact(Tuple) -> Tuple.
     
