@@ -35,19 +35,19 @@
       RAM: <span id=ram></span><br>
       SESSION: <span id=session></span>
       VM: <span id=enode></span>
-      </div>
-    </section>
+      </di  v>
+        </section>
 
 
-    <div class=chart align=center>
+    <!--div class=chart align=center>
       <svg width=900 height=200></svg>
       <script src="https://d3js.org/d3.v4.min.js"></script>
       <script src="js/d3.js"></script>
-    </div>
+    </div-->
 
     <div class=container>
-      <div><h2>WRITERS</h2><div  id=streams></div></div>
-      <div><h2>FEEDS</h2><div  id=datawin>To display the feed select the writer.</div></div>
+      <div><h2>WRITERS</h2><div  id=writers></div></div>
+      <div><h2>FEEDS</h2><div  id=feeds>To display the feed select the writer.</div></div>
     </div>
 
   </article>
@@ -66,7 +66,6 @@
                 port = 8043;</script>
     <script src='https://ws.n2o.space/priv/ftp.js'></script>
     <script src='https://ws.n2o.space/priv/nitro.js'></script>
-    <script>$io.do = function(r) { console.log(r); };</script>
     <script>protos = [$bert]; N2O_start();
             document.querySelector('.container')
                     .addEventListener('click', function(e) { e.preventDefault() });

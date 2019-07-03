@@ -36,6 +36,7 @@ defmodule BUD.Mixfile do
       {:kvs, "~> 6.7.3"},
       {:erp, "~> 0.7.0"},
       {:bpe, "~> 4.7.3"},
+      {:nitro, "~> 4.7.1"},
       {:form, "~> 4.7.0"}
     ]
   end
