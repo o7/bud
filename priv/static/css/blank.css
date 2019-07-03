@@ -307,7 +307,7 @@ li { list-style-position: inside; }
     }
 
     aside {
-        text-align: center;
+        text-align: left;
         padding-bottom: 100px;
     }
 

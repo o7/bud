@@ -13,61 +13,19 @@ body {
   color: #585858;
 }
 
-.nav {
-  background: white;
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  font-family: Microgramma;
- 
-}
-
-.nav > a {
-  display: inline-block;
-  color: #585858;
-  text-decoration: none;
-  font-size: 20px;
-  padding: 20px 20px;
-}
-
-.nav > a:visited {
-   color: #585858;
-}
-
-.nav > a:hover {
-  background: #E8E8E8;
-  color: #282828;
-}
-
-.nav > a:active {
-  background: #D8D8D8;
-  color: #181818;
-}
-
-.app {
+article {
   max-width: 1000px;
   margin: auto;
 }
+
+.streams { display: block; }
+
+a { display: block; }
 
 .header {
    padding: 20px;
    display: flex;
    flex-direction: column;
-}
-
-.header > .title {
-  font-size: 50px;
-  line-height: 1;
-  padding: 0;
-  margin: 0;
-}
-
-.header > .resources {
-  padding-right: 20px;
-  font-size: 17px;
-}
-
-.header > .info {
-  font-size: 14px;
 }
 
 .chart {
@@ -87,7 +45,7 @@ body {
 }
 
 .container > div {
-  width: 240px;
+  width: 340px;
   overflow-x: auto;
   background: white;
   box-shadow: 1px 1px 4px rgba(0,0,0,0.2);
@@ -117,7 +75,7 @@ body {
     position: absolute;
     top: 0;
     right: 0;
-    width: calc(100% - 270px);
+    width: calc(100% - 370px);
   }
 }
 
@@ -176,9 +134,3 @@ body {
   color: #2D4762;
 }
 
-@font-face {
-    font-family: "Microgramma";
-    src: url("http://www.myfontfree.com/data/518/m/microgrammabold/Microgramma Bold.ttf");
-}
-
-.title { font-family: Microgramma; }

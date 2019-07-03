@@ -7,6 +7,7 @@
   <meta name="description" content="SYNRC KVS ADM" />
   <meta name="author" content="Maxim Sokhatsky" />
   <title>KVX</title>
+  <link rel="stylesheet" href="css/adm.css?v=2" />
   <link rel="stylesheet" href="css/blank.css" />
   <link href="https://fonts.googleapis.com/css?family=Michroma" rel="stylesheet">
   <script> function setup_window(name) { console.log("OK"); }; </script>
@@ -14,49 +15,53 @@
 
 <body>
 
-  <nav class=nav>
-    <a href="">N2O</a>
-    <a href="">KVX</a>
-    <a href="">BPE</a>
-  </nav>
+  <nav>
+    <a href='index.html'>BUD</a>
+    <a href='login.htm'>LOGIN</a>
+    <a href='actors.htm'>ACTORS</a>
+    <a href='forms.htm'>FORMS</a>
+    <a href='kvx.htm' style="background:#ededed;">KVS</a>
+ </nav>
 
-  <div class=app>
+<aside>
 
-    <div class=header>
-      <h1 class=title>KVX</h1>
-      <div class=resources>
-        SSD: <span id=disc></span>, RAM: <span id=ram></span>
+<article>
+
+
+
+    <section>
+      <div>
+      SSD: <span id=disc></span>
+      RAM: <span id=ram></span>
+      SESSION: <span id=session></span>
+      VM: <span id=enode></span>
       </div>
-      <div class="info">
-        <div>SESSION:
-          <div id=session></div>
-        </div>
-        <div>VM: <span id=enode></span></div>
-        <div>DATE: <span id=date></span></div>
-      </div>
-    </div>
+    </section>
+
+</article>
 
     <div class=chart align=center>
-      <svg width=800 height=200></svg>
-      <script src="http://d3js.org/d3.v4.min.js"></script>
+      <svg width=900 height=200></svg>
+      <script src="https://d3js.org/d3.v4.min.js"></script>
       <script src="js/d3.js"></script>
     </div>
 
-    <div class=container>
-      <div id=streams><h2>STREAMS</h2></div>
-      <div id=datawin><h2>DATA WINDOW</h2></div>
-      <div id=binders><h2>BINDERS</h2></div>
-      <div id=boot    <h2>CORE</h2></div>
-    </div>
 
-  </div>
+    <div class=container>
+      <div><h2>WRITERS</h2><div  id=streams></div></div>
+      <div><h2>FEEDS</h2><div  id=datawin></div></div>
+    </div>
+</aside>
+
+<main>
+</main>
 
     <script src='https://ws.n2o.space/priv/utf8.js'></script>
     <script src='https://ws.n2o.space/priv/bert.js'></script>
     <script src='https://ws.n2o.space/priv/heart.js'></script>
     <script src='https://ws.n2o.space/priv/ieee754.js'></script>
     <script src='https://ws.n2o.space/priv/n2o.js'></script>
-    <script>host = location.hostname === 'sample.n2o.space' ? 'ns.synrc.com' : location.hostname;
+    <script>host = location.hostname === 'bud.n2o.space' ? 'ns.synrc.com' : location.hostname;
                 port = 8043;</script>
     <script src='https://ws.n2o.space/priv/ftp.js'></script>
     <script src='https://ws.n2o.space/priv/nitro.js'></script>
