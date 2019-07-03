@@ -3,7 +3,7 @@
 -include_lib("nitro/include/nitro.hrl").
 -include_lib("kvs/include/cursors.hrl").
 
-event(init)      -> [ self() ! {direct,X} || X <- [writers,session,enode,disc,ram] ];
+event(init)      -> [ begin nitro:clear(X), self() ! {direct,X} end || X <- [writers,session,enode,disc,ram] ];
 event(ram)       -> nitro:update(ram, #span{id = ram, body = ram(os:type())});
 event(session)   -> nitro:update(session, #span{id = session, body = n2o:sid()});
 event(enode)     -> nitro:update(enode, #span{id = enode, body = lists:concat([node()])});
