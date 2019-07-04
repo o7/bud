@@ -18,10 +18,12 @@ defmodule BUD.Routes do
   def route(<<"form", _::binary>>), do: BUD.Forms
   def route(<<"act", _::binary>>), do: BUD.Act
   def route(<<"kvs", _::binary>>), do: :kvs_adm
+  def route(<<"plm", _::binary>>), do: BUD.Product
   def route(<<"app/login", _::binary>>), do: BUD.Login
   def route(<<"app/form", _::binary>>), do: BUD.Forms
   def route(<<"app/act", _::binary>>), do: BUD.Act
   def route(<<"app/bpe", _::binary>>), do: BUD.Index
   def route(<<"app/kvs", _::binary>>), do: :kvs_adm
+  def route(<<"app/plm", _::binary>>), do: BUD.Products
   def route(_), do: BUD.Login
 end
