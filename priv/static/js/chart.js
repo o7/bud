@@ -1,10 +1,10 @@
 
-function draw_chart(id) {
+function draw_chart(id,calendar,payments) {
     var ctx = document.getElementById(id).getContext('2d');
     new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        labels: calendar,
         datasets: [
         {
             label: 'Salaries',

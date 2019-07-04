@@ -30,7 +30,12 @@ defmodule BUD.Index do
 
     NITRO.insert_bottom(
       :ctrl,
-      link(id: :creator, body: "New", postback: :create, class: [:button, :sgreen])
+      link(
+        id: :creator,
+        body: "New",
+        postback: :create,
+        class: [:button, :sgreen]
+      )
     )
 
     NITRO.hide(:frms)
@@ -38,7 +43,10 @@ defmodule BUD.Index do
     for i <- KVS.feed('/bpe/proc') do
       NITRO.insert_bottom(
         :tableRow,
-        BUD.Row.new(FORM.atom([:row, process(i, :id)]), BPE.load(process(i, :id)))
+        BUD.Row.new(
+          FORM.atom([:row, process(i, :id)]),
+          BPE.load(process(i, :id))
+        )
       )
     end
   end
@@ -47,7 +55,11 @@ defmodule BUD.Index do
     p = :bpe.load(id)
     BPE.start(p, [])
     BPE.complete(id)
-    NITRO.update(FORM.atom([:tr, :row, id]), BUD.Row.new(FORM.atom([:row, id]), BPE.proc(id)))
+
+    NITRO.update(
+      FORM.atom([:tr, :row, id]),
+      BUD.Row.new(FORM.atom([:row, id]), BPE.proc(id))
+    )
   end
 
   def event({:Spawn, _}) do
@@ -59,7 +71,11 @@ defmodule BUD.Index do
         {:ok, i} -> i
       end
 
-    NITRO.insert_after(:header, BUD.Row.new(FORM.atom([:row, id]), BPE.proc(id)))
+    NITRO.insert_after(
+      :header,
+      BUD.Row.new(FORM.atom([:row, id]), BPE.proc(id))
+    )
+
     NITRO.hide(:frms)
     NITRO.show(:ctrl)
   end
@@ -67,7 +83,13 @@ defmodule BUD.Index do
   def event({:Discard, []}), do: [NITRO.hide(:frms), NITRO.show(:ctrl)]
 
   def event({event, name}) do
-    NITRO.wire(:lists.concat(["console.log(\"", :io_lib.format("~p", [{event, name}]), "\");"]))
+    NITRO.wire(
+      :lists.concat([
+        "console.log(\"",
+        :io_lib.format("~p", [{event, name}]),
+        "\");"
+      ])
+    )
 
     IO.inspect({event, name})
   end

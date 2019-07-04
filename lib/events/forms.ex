@@ -4,8 +4,16 @@ defmodule BUD.Forms do
 
   def event({:client, {:form, mod}}) do
     NITRO.insert_bottom(:stand, h3(body: NITRO.to_binary(mod)))
-    NITRO.insert_bottom(:stand, h5(body: mod.doc(), style: "margin-bottom: 10px;"))
-    NITRO.insert_bottom(:stand, panel(FORM.new(mod.new(mod, mod.id()), mod.id()), class: :form))
+
+    NITRO.insert_bottom(
+      :stand,
+      h5(body: mod.doc(), style: "margin-bottom: 10px;")
+    )
+
+    NITRO.insert_bottom(
+      :stand,
+      panel(FORM.new(mod.new(mod, mod.id()), mod.id()), class: :form)
+    )
   end
 
   def event(:init) do
@@ -17,7 +25,13 @@ defmodule BUD.Forms do
   end
 
   def event({ev, name}) do
-    NITRO.wire(:lists.concat(['console.log(\"', :io_lib.format('~p', [{ev, name}]), '\");']))
+    NITRO.wire(
+      :lists.concat([
+        'console.log(\"',
+        :io_lib.format('~p', [{ev, name}]),
+        '\");'
+      ])
+    )
   end
 
   def event(any), do: IO.inspect(any)

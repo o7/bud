@@ -47,7 +47,11 @@ defmodule BUD.Act do
           options: [
             opt(name: BUD.Account, title: "Client Acquire [QUANTERALL]"),
             opt(name: BUD.Account, title: "Client Tracking [QUANTERALL]"),
-            opt(name: BUD.Account, checked: true, title: "Client Account [SYNRC BANK]")
+            opt(
+              name: BUD.Account,
+              checked: true,
+              title: "Client Account [SYNRC BANK]"
+            )
           ]
         )
       ]

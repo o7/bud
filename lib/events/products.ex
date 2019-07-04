@@ -20,6 +20,31 @@ defmodule BUD.Products do
     )
   end
 
+  def months() do
+    zip =
+      :lists.zip(:lists.seq(1, 12), [
+        :Jan,
+        :Feb,
+        :Mar,
+        :Apr,
+        :May,
+        :Jun,
+        :Jul,
+        :Aug,
+        :Sep,
+        :Oct,
+        :Nov,
+        :Dec
+      ])
+
+    {{_, x, _}, _} = :calendar.local_time()
+    {a, b} = :lists.split(x, zip)
+    piz = b ++ a
+    half = :lists.reverse(:lists.sublist(:lists.reverse(piz, 1), 6))
+
+    {x, :lists.flatten(:io_lib.format("~p", [:erlang.element(2, :lists.unzip(half))]))}
+  end
+
   def event(:init) do
     NITRO.clear(:tableRow)
     NITRO.clear(:tableHead)
@@ -27,12 +52,15 @@ defmodule BUD.Products do
 
     for i <- KVS.feed('/plm/products') do
       code = ERP."Product"(i, :code)
+      _ = KVS.head('/plm/' ++ code ++ '/payments', 24)
+
       NITRO.insert_bottom(
         :tableRow,
         BUD.Product.new(code, i)
       )
 
-      NITRO.wire('draw_chart(\''++ code ++ '\');')
+      {_, x} = months()
+      NITRO.wire('draw_chart(\'' ++ code ++ '\',' ++ x ++ ');')
     end
   end
 

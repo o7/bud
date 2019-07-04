@@ -23,7 +23,10 @@ defmodule BUD.Mixfile do
   end
 
   def application() do
-    [mod: {BUD.Application, []}, applications: [:ranch, :cowboy, :rocksdb, :kvs, :syn, :erp, :bpe, :n2o]]
+    [
+      mod: {BUD.Application, []},
+      applications: [:ranch, :cowboy, :rocksdb, :kvs, :syn, :erp, :bpe, :n2o]
+    ]
   end
 
   def deps() do
@@ -33,8 +36,8 @@ defmodule BUD.Mixfile do
       {:rocksdb, "~> 1.2.0"},
       {:n2o, "~> 6.7.1"},
       {:syn, "~> 1.6.3"},
-      {:kvs, "~> 6.7.3"},
-      {:erp, "~> 0.7.4"},
+      {:kvs, "~> 6.7.4"},
+      {:erp, "~> 0.7.5"},
       {:bpe, "~> 4.7.3"},
       {:nitro, "~> 4.7.2"},
       {:form, "~> 4.7.0"}

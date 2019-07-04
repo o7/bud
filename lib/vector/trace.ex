@@ -32,7 +32,10 @@ defmodule BUD.Trace do
           class: :column20,
           body:
             :string.join(
-              :lists.map(fn x -> NITRO.to_list([:erlang.element(1, x)]) end, docs),
+              :lists.map(
+                fn x -> NITRO.to_list([:erlang.element(1, x)]) end,
+                docs
+              ),
               ', '
             )
         )
