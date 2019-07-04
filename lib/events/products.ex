@@ -1,4 +1,4 @@
-defmodule BUD.Products do
+defmodule PLM.Products do
   require Logger
   use N2O, with: [:n2o, :kvs, :nitro]
   use FORM
@@ -48,7 +48,7 @@ defmodule BUD.Products do
   def event(:init) do
     NITRO.clear(:tableRow)
     NITRO.clear(:tableHead)
-    NITRO.insert_top(:tableHead, BUD.Products.header())
+    NITRO.insert_top(:tableHead, PLM.Products.header())
 
     for i <- KVS.feed('/plm/products') do
       code = ERP."Product"(i, :code)
@@ -56,7 +56,7 @@ defmodule BUD.Products do
 
       NITRO.insert_bottom(
         :tableRow,
-        BUD.Product.new(code, i)
+        PLM.Product.new(code, i)
       )
 
       {_, x} = months()

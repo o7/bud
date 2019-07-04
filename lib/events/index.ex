@@ -1,4 +1,4 @@
-defmodule BUD.Index do
+defmodule PLM.Index do
   require Logger
   use N2O, with: [:n2o, :kvs, :nitro]
   use FORM
@@ -22,10 +22,10 @@ defmodule BUD.Index do
   def event(:init) do
     NITRO.clear(:tableRow)
     NITRO.clear(:tableHead)
-    NITRO.insert_top(:tableHead, BUD.Index.header())
+    NITRO.insert_top(:tableHead, PLM.Index.header())
     NITRO.clear(:frms)
     NITRO.clear(:ctrl)
-    mod = BUD.Act
+    mod = PLM.Act
     NITRO.insert_bottom(:frms, FORM.new(mod.new(mod, mod.id()), mod.id()))
 
     NITRO.insert_bottom(
@@ -43,7 +43,7 @@ defmodule BUD.Index do
     for i <- KVS.feed('/bpe/proc') do
       NITRO.insert_bottom(
         :tableRow,
-        BUD.Row.new(
+        PLM.Row.new(
           FORM.atom([:row, process(i, :id)]),
           BPE.load(process(i, :id))
         )
@@ -58,12 +58,12 @@ defmodule BUD.Index do
 
     NITRO.update(
       FORM.atom([:tr, :row, id]),
-      BUD.Row.new(FORM.atom([:row, id]), BPE.proc(id))
+      PLM.Row.new(FORM.atom([:row, id]), BPE.proc(id))
     )
   end
 
   def event({:Spawn, _}) do
-    atom = 'process_type_pi_Elixir.BUD.Act' |> NITRO.q() |> NITRO.to_atom()
+    atom = 'process_type_pi_Elixir.PLM.Act' |> NITRO.q() |> NITRO.to_atom()
 
     id =
       case BPE.start(atom.def(), []) do
@@ -73,7 +73,7 @@ defmodule BUD.Index do
 
     NITRO.insert_after(
       :header,
-      BUD.Row.new(FORM.atom([:row, id]), BPE.proc(id))
+      PLM.Row.new(FORM.atom([:row, id]), BPE.proc(id))
     )
 
     NITRO.hide(:frms)

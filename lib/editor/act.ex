@@ -1,4 +1,4 @@
-defmodule BUD.Act do
+defmodule PLM.Act do
   use N2O, with: [:n2o, :kvs, :nitro]
   use FORM, with: [:form]
   use BPE
@@ -45,10 +45,10 @@ defmodule BUD.Act do
           title: "Type",
           tooltips: [],
           options: [
-            opt(name: BUD.Account, title: "Client Acquire [QUANTERALL]"),
-            opt(name: BUD.Account, title: "Client Tracking [QUANTERALL]"),
+            opt(name: PLM.Account, title: "Client Acquire [QUANTERALL]"),
+            opt(name: PLM.Account, title: "Client Tracking [QUANTERALL]"),
             opt(
-              name: BUD.Account,
+              name: PLM.Account,
               checked: true,
               title: "Client Account [SYNRC BANK]"
             )
@@ -77,7 +77,7 @@ defmodule BUD.Act do
         NITRO.update(:num, "ERR")
 
       _ ->
-        NITRO.insert_top(:tableHead, BUD.Act.header())
+        NITRO.insert_top(:tableHead, PLM.Act.header())
         NITRO.update(:n, bin)
         NITRO.update(:num, bin)
     end
@@ -88,7 +88,7 @@ defmodule BUD.Act do
         do:
           NITRO.insert_bottom(
             :tableRow,
-            BUD.Trace.new(FORM.atom([:trace, NITRO.to_list(hist(i, :id))]), i)
+            PLM.Trace.new(FORM.atom([:trace, NITRO.to_list(hist(i, :id))]), i)
           )
   end
 

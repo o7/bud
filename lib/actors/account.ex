@@ -1,4 +1,4 @@
-defmodule BUD.Account do
+defmodule PLM.Account do
   use BPE, with: [:bpe]
   require Record
   Record.defrecord(:close_account, [])
@@ -16,13 +16,13 @@ defmodule BUD.Account do
         sequenceFlow(source: :Signatory, target: [:Process, :Final])
       ],
       tasks: [
-        userTask(name: :Created, module: BUD.Account),
-        userTask(name: :Init, module: BUD.Account),
-        userTask(name: :Upload, module: BUD.Account),
-        userTask(name: :Signatory, module: BUD.Account),
-        serviceTask(name: :Payment, module: BUD.Account),
-        serviceTask(name: :Process, module: BUD.Account),
-        endEvent(name: :Final, module: BUD.Account)
+        userTask(name: :Created, module: PLM.Account),
+        userTask(name: :Init, module: PLM.Account),
+        userTask(name: :Upload, module: PLM.Account),
+        userTask(name: :Signatory, module: PLM.Account),
+        serviceTask(name: :Payment, module: PLM.Account),
+        serviceTask(name: :Process, module: PLM.Account),
+        endEvent(name: :Final, module: PLM.Account)
       ],
       beginEvent: :Init,
       endEvent: :Final,

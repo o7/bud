@@ -8,7 +8,7 @@ config :n2o,
   ws_services: ['/chat'],
   upload: "./priv/static",
   protocols: [:n2o_nitro, :n2o_ftp, :bpe_n2o],
-  routes: BUD.Routes
+  routes: PLM.Routes
 
 config :kvs,
   dba: :kvs_rocks,
@@ -16,4 +16,4 @@ config :kvs,
   schema: [:kvs, :kvs_stream, :bpe_metainfo]
 
 config :form,
-  registry: [BUD.Trace, BUD.Row, BUD.Act, BUD.Pass]
+  registry: [PLM.Trace, PLM.Row, PLM.Act, PLM.Pass, PLM.Product]

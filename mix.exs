@@ -1,12 +1,12 @@
-defmodule BUD.Mixfile do
+defmodule PLM.Mixfile do
   use Mix.Project
 
   def project() do
     [
-      app: :bud,
-      version: "0.6.0",
+      app: :plm,
+      version: "0.7.0",
       elixir: "~> 1.7",
-      description: "BUD Capital Budgeting",
+      description: "PLM Product Lifecycle Management",
       package: package(),
       deps: deps()
     ]
@@ -17,14 +17,14 @@ defmodule BUD.Mixfile do
       files: ~w(doc lib src mix.exs LICENSE),
       licenses: ["ISC"],
       maintainers: ["Namdak Tonpa"],
-      name: :bud,
-      links: %{"GitHub" => "https://github.com/o7/bud"}
+      name: :plm,
+      links: %{"GitHub" => "https://github.com/o7/PLM"}
     ]
   end
 
   def application() do
     [
-      mod: {BUD.Application, []},
+      mod: {PLM.Application, []},
       applications: [:ranch, :cowboy, :rocksdb, :kvs, :syn, :erp, :bpe, :n2o]
     ]
   end

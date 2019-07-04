@@ -1,4 +1,4 @@
-defmodule BUD.Forms do
+defmodule PLM.Forms do
   use N2O, with: [:n2o, :nitro, :form]
   require Logger
 

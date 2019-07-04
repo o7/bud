@@ -1,4 +1,4 @@
-defmodule BUD.Row do
+defmodule PLM.Row do
   use N2O, with: [:n2o, :nitro]
   use FORM, with: [:form]
   use BPE
