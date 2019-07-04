@@ -4,13 +4,21 @@ function draw_chart(id) {
     new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-            label: 'My First dataset',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        datasets: [
+        {
+            label: 'Salaries',
+            backgroundColor: '#5ca135',
+            borderColor: 'green',
             data: [0, 10, 5, 2, 20, 30, 45]
-        }]
+        },
+        {
+            label: 'Payments',
+            backgroundColor: 'SteelBlue',
+            borderColor: 'DeepSkyBlue',
+            data: [0, 11, 15, 12, 25, 35, 50]
+        }
+        ]
     },
     options: {}
 });
