@@ -31,7 +31,7 @@ defmodule BUD.Mixfile do
       {:ex_doc, "~> 0.11.0", only: :dev},
       {:cowboy, "~> 2.5.0"},
       {:rocksdb, "~> 1.2.0"},
-      {:n2o, "~> 6.6.0"},
+      {:n2o, "~> 6.7.1"},
       {:syn, "~> 1.6.3"},
       {:kvs, "~> 6.7.3"},
       {:erp, "~> 0.7.2"},
