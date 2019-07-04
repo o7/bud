@@ -4,8 +4,10 @@ config :n2o,
   pickler: :n2o_secret,
   mq: :n2o_syn,
   port: 8043,
+  mqtt_server: true,
+  ws_server: false,
   upload: "./priv/static",
-  protocols: [:n2o_nitro, :n2o_ftp],
+  protocols: [:n2o_nitro, :n2o_ftp, :bpe_n2o],
   routes: BUD.Routes
 
 config :kvs,
