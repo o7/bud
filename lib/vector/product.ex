@@ -6,13 +6,11 @@ defmodule BUD.Product do
   require Record
 
   def doc(),
-    do:
-      "PLM product."
+    do: "PLM product."
 
   def id(), do: ERP."Product"()
 
   def new(name, prod) do
-
     panel(
       id: FORM.atom([:tr, name]),
       class: :td,
@@ -32,8 +30,9 @@ defmodule BUD.Product do
         ),
         panel(
           class: :column20,
-          body: ""
-        )
+          body: panel(class: :chart, body: "<canvas id=\"myChart\"></canvas>")
+        ),
+        panel(class: :column6, body: link(class: [:sgreen, :button], postback: :null, body: "Manage"))
       ]
     )
   end

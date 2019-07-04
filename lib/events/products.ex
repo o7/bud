@@ -25,12 +25,17 @@ defmodule BUD.Products do
     NITRO.clear(:tableHead)
     NITRO.insert_top(:tableHead, BUD.Products.header())
 
-   for i <- KVS.feed('/plm/products') do
+    for i <- KVS.feed('/plm/products') do
       NITRO.insert_bottom(
         :tableRow,
-        BUD.Product.new(FORM.atom([:row, ERP."Product"(i, :code)]), i))
+        BUD.Product.new(FORM.atom([:row, ERP."Product"(i, :code)]), i)
+      )
+
+      NITRO.wire('draw_chart(\'myChart\');')
     end
-   end
+  end
+
+  def event(:link_pressed), do: IO.inspect("OK!!!")
 
   def event(any), do: IO.inspect(any)
 end
