@@ -30,9 +30,9 @@ defmodule BUD.Product do
         ),
         panel(
           class: :column20,
-          body: panel(class: :chart, body: "<canvas id=\"myChart\"></canvas>")
+          body: panel(class: :chart, body: "<canvas id=\"" <> NITRO.to_binary(name) <>"\"></canvas>")
         ),
-        panel(class: :column6, body: link(class: [:sgreen, :button], postback: :null, body: "Manage"))
+        panel(class: :column6, body: link(class: [:sgreen, :button], postback: :null, body: "Invest"))
       ]
     )
   end
