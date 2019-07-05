@@ -3,8 +3,8 @@ defmodule PLM.Mixfile do
 
   def project() do
     [
-      app: :plm,
-      version: "0.7.0",
+      app: :bud,
+      version: "0.7.1",
       elixir: "~> 1.7",
       description: "PLM Product Lifecycle Management",
       package: package(),
@@ -17,8 +17,8 @@ defmodule PLM.Mixfile do
       files: ~w(doc lib src mix.exs LICENSE),
       licenses: ["ISC"],
       maintainers: ["Namdak Tonpa"],
-      name: :plm,
-      links: %{"GitHub" => "https://github.com/o7/PLM"}
+      name: :bud,
+      links: %{"GitHub" => "https://github.com/o7/bud"}
     ]
   end
 

@@ -1,4 +1,4 @@
-defmodule PLM.Pass do
+defmodule PLM.Forms.Pass do
   use N2O, with: [:n2o, :nitro]
   use FORM, with: [:form]
   require Logger
@@ -20,6 +20,14 @@ defmodule PLM.Pass do
           title: "Cancel",
           class: :cancel,
           postback: {:Close, []}
+        ),
+        but(
+          id: :sms,
+          name: :sms,
+          title: "SMS",
+          class: :cancel,
+          sources: [:user, :otp],
+          postback: {:SMS, []}
         ),
         but(
           id: :proceed,
